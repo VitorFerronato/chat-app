@@ -12,8 +12,6 @@ const ChatBox = () => {
     const { recipientUser } = useFetchRecipientUser(currentChat, user)
     const [textMessage, setTextMessage] = useState("")
 
-    console.log("Text", textMessage)
-
     if (!recipientUser) return (
         <p style={{ textAlign: "center", width: "100%}" }}>
             No Conversation selected yet
