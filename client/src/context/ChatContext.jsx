@@ -17,9 +17,8 @@ export const ChatContextProvider = ({ children, user }) => {
     const [newMessage, setNewMessage] = useState(null)
     const [socket, setSocket] = useState(null)
     const [onlineUsers, setOnlineUsers] = useState([])
-
-    console.log('onlineUsers', onlineUsers);
-
+    const [notifications, setNotifications] = useState([])
+    const [allUsers, setAllUsers] = useState([])
 
     useEffect(() => {
         const newSocket = io("http://localhost:3000")
@@ -55,7 +54,7 @@ export const ChatContextProvider = ({ children, user }) => {
 
     }, [newMessage])
 
-    // Recive message
+    // Recive message and notifications
     useEffect(() => {
         if (socket === null) return
 
@@ -65,7 +64,20 @@ export const ChatContextProvider = ({ children, user }) => {
             setMessages((prev) => [...prev, res])
         })
 
-        return () => { socket.off("getMessage") }
+        socket.on("getNotifications", (res) => {
+            const isChatOpen = currentChat?.members.some(id => id === res.senderId)
+
+            if (isChatOpen) {
+                setNotifications(prev => [{ ...res, isRead: true }, ...prev])
+            } else {
+                setNotifications(prev => [res, ...prev])
+            }
+        })
+
+        return () => {
+            socket.off("getMessage")
+            socket.off("getNotifications")
+        }
 
     }, [socket, currentChat])
 
@@ -89,6 +101,7 @@ export const ChatContextProvider = ({ children, user }) => {
             })
 
             setPotentialChats(pChats)
+            setAllUsers(response)
         }
 
         getUSers()
@@ -167,5 +180,5 @@ export const ChatContextProvider = ({ children, user }) => {
         setUserChats((prev) => [...prev, response])
     }, [])
 
-    return <ChatContext.Provider value={{ userChats, isUserChatsLoading, userChatsError, potentialChats, createChat, updateCurrentChat, currentChat, messages, isMessagesLoading, messagesError, sendTextMessage, onlineUsers }}>{children}</ChatContext.Provider>
+    return <ChatContext.Provider value={{ userChats, isUserChatsLoading, userChatsError, potentialChats, createChat, updateCurrentChat, currentChat, messages, isMessagesLoading, messagesError, sendTextMessage, onlineUsers, notifications, allUsers }}>{children}</ChatContext.Provider>
 }
