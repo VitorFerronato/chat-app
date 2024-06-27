@@ -1,5 +1,8 @@
 # Chat App
 
+![image](https://github.com/VitorFerronato/chat-app/assets/94748997/9535a290-55f0-450a-85f5-9c10eb4f4105)
+
+
 ## 💻 The Project
 This is a real-time chat application where two users can communicate through messages, register new users, log in, see other users online, and start a conversation.
 
