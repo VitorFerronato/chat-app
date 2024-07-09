@@ -1,10 +1,19 @@
-# Chat App
+# CHAT APP
 
-![image](https://github.com/VitorFerronato/chat-app/assets/94748997/9535a290-55f0-450a-85f5-9c10eb4f4105)
+<div style="display:flex">
+<img align="center" alt="vuejs" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+<img align="center" alt="vuejs" src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" />
+<img align="center" alt="vuejs" src="https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+<img align="center" alt="vuejs" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
+<img align="center" alt="vuejs" src="https://img.shields.io/badge/Socket.io-010101?&style=for-the-badge&logo=Socket.io&logoColor=white" />
+</div>
+
 
 
 ## 💻 The Project
 This is a real-time chat application where two users can communicate through messages, register new users, log in, see other users online, and start a conversation.
+</br>
+![image](https://github.com/VitorFerronato/chat-app/assets/94748997/9535a290-55f0-450a-85f5-9c10eb4f4105)
 
 ## Features
 
